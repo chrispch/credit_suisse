@@ -1,4 +1,3 @@
-# sort given set in descending order
 # setup (dynamic programming):
 # array where indices represent the target sum
 # contains an array of solutions (empty array means no soln)
@@ -21,7 +20,6 @@
 # - more than one possible solution; but only one solution is expected to be returned
 # - smallest set of indices of numbers refers to the smallest number of items in the set, not the numerical sum
 # of the indices in the set (ie. [10, 11] is smaller than [1, 2, 3], [1,2] and [3,4] and of equivalent size)
-# - assume that starting set of numbers are not sorted
 # - all numbers in the given list are greater than or equal to zero
 
 # limits:
@@ -33,10 +31,8 @@ class find_smallest_combi:
 
     # Prepares input for subsequent processing
     def prep_input(self, target, input_list):
-        # largest items first
-        _sorted = sorted(input_list, reverse=True)
         # remove any numbers which are already bigger than the target
-        return list(filter(lambda x: x <= target, _sorted))
+        return list(filter(lambda x: x <= target, input_list))
 
     # Checks
     def is_equal_to_target(self, target, input_list):
@@ -142,7 +138,7 @@ class find_smallest_combi:
         else:
             print("The solution is: " 
                 + str(self.convert_values_to_indices(answer, original_list)))
-
+                
 if __name__ == "__main__":
     print("main")
     input_list = [0, 1, 1, 2, 6, 3, 17, 82, 23, 234]
